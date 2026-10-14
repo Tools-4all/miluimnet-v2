@@ -1,0 +1,14 @@
+# ספריות - מותקנות מחדש עם npm run setup
+node_modules
+
+# הגדרות סודיות (כתובת מסד הנתונים, מפתח ה-session) - אסור להעלות ל-git!
+.env
+
+# קבצים שנבנים אוטומטית
+client/dist
+
+# מערכת ההפעלה ועורכי קוד
+.DS_Store
+.vscode
+.idea
+*.log

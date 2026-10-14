@@ -1,0 +1,7 @@
+{
+  "name": "miluimnet",
+  "version": "2.0.0",
+  "private": true,
+  "description": "מילואימנט - רשת חברתית למילואימניקים (Node.js, Express, MongoDB, React)",
+  "type": "commonjs"
+}
