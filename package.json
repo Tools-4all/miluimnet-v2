@@ -3,5 +3,15 @@
   "version": "2.0.0",
   "private": true,
   "description": "מילואימנט - רשת חברתית למילואימניקים (Node.js, Express, MongoDB, React)",
-  "type": "commonjs"
+  "type": "commonjs",
+  "main": "server/server.js",
+  "scripts": {
+    "server": "node --watch server/server.js",
+    "start": "node server/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.8",
+    "express": "^5.3.0",
+    "mongoose": "^9.11.2"
+  }
 }
