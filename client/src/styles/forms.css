@@ -1,0 +1,108 @@
+/* שדות קלט, טפסים ושורת סינון/חיפוש */
+
+/* ---------- שדות קלט ---------- */
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--surface);
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  width: 100%;
+}
+
+.filters select {
+  width: auto;
+}
+
+/* מסגרת בצבע הראשי כשהשדה פעיל (focus) */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+
+input[type='checkbox'] {
+  width: auto;
+  accent-color: var(--primary);
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+/* ---------- טפסים ---------- */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* שני שדות אחד ליד השני */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-row-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.form-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.file-input {
+  border-style: dashed;
+  padding: 16px;
+  cursor: pointer;
+}
+
+/* ---------- שורת סינון וחיפוש ---------- */
+
+.filters {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.filters-search {
+  flex: 1;
+  min-width: 220px;
+}
+
+.results-count {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 12px;
+}

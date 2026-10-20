@@ -1,0 +1,96 @@
+/* בסיס: משתני צבעים ומידות, גופן, ומבנה הדף. כל שאר הקבצים משתמשים במשתנים מכאן */
+
+/* =========================================================
+   עיצוב כללי לכל האתר
+   כל הצבעים והמידות מוגדרים פעם אחת כאן, כמשתנים (CSS variables),
+   וכל שאר הקובץ משתמש בהם עם var(--שם)
+   ========================================================= */
+
+:root {
+  --primary: #3d4a2a; /* ירוק זית כהה */
+  --primary-hover: #2c361e;
+  --primary-soft: #eef0e6;
+  --accent: #a8854a; /* חאקי-פליז, לפרטים קטנים */
+
+  --bg: #f5f4ef;
+  --surface: #ffffff;
+  --border: #e2e0d8;
+  --text: #1d2116;
+  --muted: #6d7063;
+
+  --danger: #b42318;
+  --danger-soft: #fdecea;
+  --success: #2e7d32;
+  --whatsapp: #1f8f4e;
+
+  --radius: 12px;
+  --radius-small: 8px;
+  --shadow: 0 1px 2px rgba(29, 33, 22, 0.06), 0 4px 16px rgba(29, 33, 22, 0.06);
+  --shadow-hover: 0 2px 4px rgba(29, 33, 22, 0.08), 0 12px 28px rgba(29, 33, 22, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Heebo', system-ui, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  margin: 0 0 8px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+p {
+  margin: 0 0 8px;
+}
+
+a {
+  color: var(--primary);
+}
+
+/* האתר בנוי כעמודה: ניווט, תוכן, ופוטר שנדחף לתחתית */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 32px 20px;
+  flex: 1;
+}
+
+.narrow {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* "פאנל" - קופסה לבנה עם מסגרת, משמשת בהרבה מקומות */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}

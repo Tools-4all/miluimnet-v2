@@ -1,0 +1,37 @@
+/* מסך צר (טלפון).
+   @media - הכללים בפנים חלים רק כשהמסך צר מ-760 פיקסלים.
+   כל נושא חדש שנוסף לאתר מוסיף כאן את ההתאמות שלו לטלפון */
+
+@media (max-width: 760px) {
+  .navbar-inner {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .logo-tagline {
+    display: none;
+  }
+
+  .nav-links {
+    order: 3; /* הקישורים יורדים לשורה שנייה */
+    flex-basis: 100%; /* תופסים את כל הרוחב, ולכן עוברים שורה */
+    overflow-x: auto;
+  }
+
+  .nav-actions {
+    margin-right: auto; /* דוחף את הכפתורים לצד השני של השורה */
+  }
+
+  .container {
+    padding: 20px 16px;
+  }
+
+  .filters select {
+    flex: 1;
+  }
+
+  .form-row,
+  .form-row-3 {
+    grid-template-columns: 1fr;
+  }
+}

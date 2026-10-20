@@ -1,0 +1,8 @@
+/* נקודת הכניסה של העיצוב: מייבא את כל קבצי ה-CSS לפי הסדר.
+   הסדר חשוב - base ראשון (המשתנים), ו-responsive אחרון (כדי שידרוס את מה שלפניו בטלפון) */
+@import './base.css';
+@import './buttons.css';
+@import './forms.css';
+@import './layout.css';
+@import './feedback.css';
+@import './responsive.css';
