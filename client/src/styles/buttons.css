@@ -86,3 +86,10 @@ button:disabled {
   background: none;
   color: var(--danger);
 }
+
+/* שורת כפתורים עם רווח ביניהם, שיורדת שורה כשאין מקום */
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}

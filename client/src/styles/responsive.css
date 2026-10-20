@@ -38,4 +38,16 @@
   .profile-header {
     flex-wrap: wrap;
   }
+
+  .group-description {
+    column-count: 1; /* בטלפון אין מקום לשתי עמודות */
+  }
+
+  .group-layout {
+    grid-template-columns: 1fr; /* חברי הקבוצה יורדים מתחת לפוסטים */
+  }
+
+  .page-header-row {
+    flex-direction: column;
+  }
 }

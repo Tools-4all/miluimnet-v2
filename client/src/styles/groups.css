@@ -1,0 +1,100 @@
+/* קבוצות: הרשימה, הכרטיסים ועמוד הקבוצה */
+
+/* כותרת עמוד עם כפתור בצד */
+.page-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.input-small {
+  width: 140px;
+}
+
+/* ---------- כרטיס קבוצה ברשימה ---------- */
+
+.group-card {
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  /* transition: המעבר במעבר עכבר קורה בהדרגה ולא בבת אחת (CSS3) */
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.group-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* חותך טקסט ארוך אחרי 2 שורות עם "..." */
+.clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pill-dark {
+  background: var(--text);
+  color: white;
+}
+
+.pill-member {
+  background: var(--accent);
+  color: white;
+}
+
+/* ---------- עמוד קבוצה ---------- */
+
+.group-header {
+  margin-bottom: 20px;
+}
+
+/* text-shadow: צל עדין לכותרת הקבוצה (CSS3) */
+.group-title {
+  font-size: 32px;
+  text-shadow: 1px 2px 3px rgba(61, 74, 42, 0.25);
+}
+
+/* multiple-columns: התיאור מתחלק לשתי עמודות עם קו מפריד, כמו בעיתון (CSS3) */
+.group-description {
+  column-count: 2;
+  column-gap: 32px;
+  column-rule: 1px solid var(--border);
+  margin: 16px 0;
+  white-space: pre-line;
+}
+
+/* פוסטים בצד אחד, חברי הקבוצה בצד השני */
+.group-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 20px;
+  align-items: start;
+  margin-top: 16px;
+}
+
+/* שורה ברשימת החברים / הבקשות */
+.member-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.member-row:last-child {
+  border-bottom: none;
+}
+
+.member-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+}

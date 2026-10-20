@@ -29,6 +29,7 @@ function Navbar() {
             <NavLink to="/" end>
               פיד
             </NavLink>
+            <NavLink to="/groups">קבוצות</NavLink>
             <NavLink to="/users">משתמשים</NavLink>
           </nav>
         )}
