@@ -34,4 +34,8 @@
   .form-row-3 {
     grid-template-columns: 1fr;
   }
+
+  .profile-header {
+    flex-wrap: wrap;
+  }
 }

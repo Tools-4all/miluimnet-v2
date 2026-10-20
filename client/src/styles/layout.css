@@ -101,6 +101,15 @@
   gap: 10px;
 }
 
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+}
+
 /* ---------- כותרות עמודים ---------- */
 
 .page-header {

@@ -1,0 +1,86 @@
+/* משתמשים: כרטיסי משתמש, תמונת פרופיל, וראש עמוד הפרופיל */
+
+/* ---------- משתמשים ---------- */
+
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.user-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.user-card div {
+  display: flex;
+  flex-direction: column;
+}
+
+.bio {
+  margin-top: 8px;
+  white-space: pre-line;
+}
+
+/* ---------- פרופיל ---------- */
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.profile-details {
+  flex: 1;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* כשאין תמונה - עיגול צבעוני עם האות הראשונה של השם */
+.avatar-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: white;
+  font-weight: 700;
+}
+
+.stats {
+  display: flex;
+  gap: 12px;
+}
+
+.stats div {
+  text-align: center;
+  background: var(--bg);
+  border-radius: var(--radius-small);
+  padding: 10px 18px;
+}
+
+.stats strong {
+  display: block;
+  font-size: 22px;
+  color: var(--primary);
+}
+
+.stats span {
+  font-size: 13px;
+  color: var(--muted);
+}
