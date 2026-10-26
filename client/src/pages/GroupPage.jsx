@@ -3,9 +3,11 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { deleteGroup, getGroup } from '../api/groups.js'
 import { useFetch } from '../hooks/useFetch.js'
+import { getPosts } from '../api/posts.js'
 import GroupActions from '../components/groups/GroupActions.jsx'
 import RequestList from '../components/groups/RequestList.jsx'
 import MemberList from '../components/groups/MemberList.jsx'
+import PostFeed from '../components/posts/PostFeed.jsx'
 import Loading from '../components/ui/Loading.jsx'
 import EmptyState from '../components/ui/EmptyState.jsx'
 import { notify } from '../utils/notify.js'
@@ -67,8 +69,16 @@ function GroupPage() {
 
       <div className="group-layout">
         <div className="group-posts">
-          {/* הפוסטים של הקבוצה יתווספו כאן בשלב הפוסטים */}
-          {!group.canSeeContent && <EmptyState text="זו קבוצה פרטית. הצטרפו כדי לראות את הפוסטים." />}
+          {group.canSeeContent ? (
+            <PostFeed
+              key={group._id}
+              fetchPage={(page) => getPosts({ group: group._id, page })}
+              form={group.isMember ? { fixedGroup: group._id } : null}
+              emptyText="עוד אין פוסטים בקבוצה."
+            />
+          ) : (
+            <EmptyState text="זו קבוצה פרטית. הצטרפו כדי לראות את הפוסטים." />
+          )}
         </div>
         <aside>
           <MemberList group={group} run={run} />

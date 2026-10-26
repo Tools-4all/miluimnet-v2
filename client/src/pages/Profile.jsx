@@ -3,9 +3,11 @@ import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { deleteMyAccount, getUser } from '../api/users.js'
 import { useFetch } from '../hooks/useFetch.js'
+import { getPosts } from '../api/posts.js'
 import { useAuth } from '../context/AuthContext.jsx'
 import ProfileHeader from '../components/users/ProfileHeader.jsx'
 import ProfileForm from '../components/users/ProfileForm.jsx'
+import PostFeed from '../components/posts/PostFeed.jsx'
 import Loading from '../components/ui/Loading.jsx'
 import EmptyState from '../components/ui/EmptyState.jsx'
 import { notify } from '../utils/notify.js'
@@ -56,6 +58,15 @@ function Profile() {
       )}
 
       {isMe && editing && <ProfileForm profile={profile} onSaved={handleSaved} onCancel={() => setEditing(false)} />}
+
+      <h2 className="section-title">פוסטים</h2>
+      {/* רק הפוסטים שמותר לי לראות: פוסטים אישיים רק אם אנחנו חברים, ופוסטים מקבוצות פרטיות רק אם אני חבר בהן */}
+      <PostFeed
+        key={id}
+        fetchPage={(page) => getPosts({ author: id, page })}
+        form={isMe ? {} : null}
+        emptyText={isMe ? 'עוד לא פרסמת פוסטים.' : 'אין פוסטים שאפשר להציג.'}
+      />
     </div>
   )
 }

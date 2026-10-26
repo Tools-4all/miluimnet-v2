@@ -13,6 +13,7 @@ import Profile from './pages/Profile.jsx'
 import Groups from './pages/Groups.jsx'
 import GroupForm from './pages/GroupForm.jsx'
 import GroupPage from './pages/GroupPage.jsx'
+import SearchPosts from './pages/SearchPosts.jsx'
 
 // עמוד שדורש התחברות
 const privatePage = (page) => <RequireAuth>{page}</RequireAuth>
@@ -39,6 +40,7 @@ function App() {
           <Route path="/groups/new" element={privatePage(<GroupForm />)} />
           <Route path="/groups/:id" element={privatePage(<GroupPage />)} />
           <Route path="/groups/:id/edit" element={privatePage(<GroupForm />)} />
+          <Route path="/search" element={privatePage(<SearchPosts />)} />
           <Route path="*" element={<EmptyState text="העמוד לא נמצא." />} />
         </Routes>
       </main>

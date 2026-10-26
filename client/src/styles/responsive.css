@@ -50,4 +50,16 @@
   .page-header-row {
     flex-direction: column;
   }
+
+  .hero {
+    padding: 28px 20px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .form-row-4 {
+    grid-template-columns: 1fr 1fr; /* בטלפון: שני שדות בשורה במקום ארבעה */
+  }
 }

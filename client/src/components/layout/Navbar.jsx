@@ -31,6 +31,7 @@ function Navbar() {
             </NavLink>
             <NavLink to="/groups">קבוצות</NavLink>
             <NavLink to="/users">משתמשים</NavLink>
+            <NavLink to="/search">חיפוש</NavLink>
           </nav>
         )}
 
