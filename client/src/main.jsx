@@ -3,6 +3,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext.jsx'
+import { SocketProvider } from './context/SocketContext.jsx'
 import App from './App.jsx'
 import './styles/index.css'
 
@@ -12,7 +13,10 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       {/* AuthProvider - כל הקומפוננטות יודעות מי מחובר */}
       <AuthProvider>
-        <App />
+        {/* SocketProvider - חיבור אחד לצ'אט, בתוך AuthProvider כי הוא צריך לדעת מי מחובר */}
+        <SocketProvider>
+          <App />
+        </SocketProvider>
       </AuthProvider>
     </BrowserRouter>
   </StrictMode>,

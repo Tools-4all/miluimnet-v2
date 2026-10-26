@@ -38,13 +38,15 @@ function setupSocket(httpServer, sessionMiddleware) {
       }
     })
 
-    // הנמען פתח את השיחה - מסמנים את ההודעות שקיבל ממנו כנקראו
-    socket.on('message:read', async ({ from } = {}) => {
+    // הנמען פתח את השיחה - מסמנים את ההודעות שקיבל ממנו כנקראו.
+    // ack - הלקוח יודע מתי הסימון הסתיים, ורק אז מעדכן את המונה בתפריט
+    socket.on('message:read', async ({ from } = {}, ack = () => {}) => {
       try {
         await markRead(from, userId)
       } catch (err) {
         errorResponse(err) // נרשם בטרמינל, והחיבור ממשיך
       }
+      ack()
     })
 
     socket.on('disconnect', () => {

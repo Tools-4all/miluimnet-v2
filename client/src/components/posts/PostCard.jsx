@@ -91,9 +91,17 @@ function PostCard({ post, onChange, onDelete }) {
       {post.videoUrl && <VideoPlayer src={post.videoUrl} />}
 
       <footer className="post-footer">
-        <button className={post.liked ? 'like-button liked' : 'like-button'} onClick={handleLike} aria-pressed={post.liked}>
-          {post.liked ? '♥' : '♡'} {post.likesCount}
-        </button>
+        <div className="actions">
+          <button className={post.liked ? 'like-button liked' : 'like-button'} onClick={handleLike} aria-pressed={post.liked}>
+            {post.liked ? '♥' : '♡'} {post.likesCount}
+          </button>
+          {/* בפוסט מכירה של מישהו אחר - קיצור דרך לשיחה עם המוכר */}
+          {post.type === 'sale' && !post.canEdit && !post.sold && (
+            <Link to={`/messages/${post.author._id}`} className="button button-small">
+              שליחת הודעה למוכר
+            </Link>
+          )}
+        </div>
         <div className="actions">
           {post.canEdit && post.type === 'sale' && (
             <button className="link-button" onClick={toggleSold}>

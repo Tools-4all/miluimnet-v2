@@ -1,10 +1,12 @@
 // סרגל הניווט העליון - מופיע בכל העמודים
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext.jsx'
+import { useSocket } from '../../context/SocketContext.jsx'
 import Avatar from '../ui/Avatar.jsx'
 
 function Navbar() {
   const { user, logout } = useAuth()
+  const { unreadCount } = useSocket()
   const navigate = useNavigate()
 
   async function handleLogout() {
@@ -30,6 +32,14 @@ function Navbar() {
               פיד
             </NavLink>
             <NavLink to="/groups">קבוצות</NavLink>
+            <NavLink to="/friends">
+              חברים
+              {user.friendRequestsCount > 0 && <span className="badge-count">{user.friendRequestsCount}</span>}
+            </NavLink>
+            <NavLink to="/messages">
+              הודעות
+              {unreadCount > 0 && <span className="badge-count">{unreadCount}</span>}
+            </NavLink>
             <NavLink to="/users">משתמשים</NavLink>
             <NavLink to="/search">חיפוש</NavLink>
           </nav>

@@ -43,8 +43,13 @@
     column-count: 1; /* בטלפון אין מקום לשתי עמודות */
   }
 
-  .group-layout {
-    grid-template-columns: 1fr; /* חברי הקבוצה יורדים מתחת לפוסטים */
+  .group-layout,
+  .messages-layout {
+    grid-template-columns: 1fr; /* העמודה שבצד יורדת מעל/מתחת לתוכן */
+  }
+
+  .chat {
+    height: 60vh;
   }
 
   .page-header-row {

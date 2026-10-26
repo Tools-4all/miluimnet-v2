@@ -1,12 +1,13 @@
 // עמוד פרופיל של משתמש. אם זה הפרופיל שלי - אפשר לערוך (Update) ולמחוק את החשבון (Delete)
 import { useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { deleteMyAccount, getUser } from '../api/users.js'
 import { useFetch } from '../hooks/useFetch.js'
 import { getPosts } from '../api/posts.js'
 import { useAuth } from '../context/AuthContext.jsx'
 import ProfileHeader from '../components/users/ProfileHeader.jsx'
 import ProfileForm from '../components/users/ProfileForm.jsx'
+import FriendButton from '../components/friends/FriendButton.jsx'
 import PostFeed from '../components/posts/PostFeed.jsx'
 import Loading from '../components/ui/Loading.jsx'
 import EmptyState from '../components/ui/EmptyState.jsx'
@@ -26,6 +27,12 @@ function Profile() {
     setProfile({ ...profile, ...updated })
     setUser({ ...user, ...updated })
     setEditing(false)
+  }
+
+  // אחרי פעולת חברות: מעדכנים את הקשר ואת מספר החברים, בלי לטעון את הפרופיל מחדש
+  function handleFriendship(status) {
+    const change = (status === 'friends') - (profile.friendship === 'friends') // +1, -1 או 0
+    setProfile({ ...profile, friendship: status, friendsCount: profile.friendsCount + change })
   }
 
   async function handleDelete() {
@@ -54,6 +61,15 @@ function Profile() {
           <button className="button-danger" onClick={handleDelete}>
             מחיקת החשבון
           </button>
+        </div>
+      )}
+
+      {!isMe && (
+        <div className="actions">
+          <FriendButton userId={id} status={profile.friendship} onChange={handleFriendship} />
+          <Link to={`/messages/${id}`} className="button button-secondary">
+            שליחת הודעה
+          </Link>
         </div>
       )}
 
