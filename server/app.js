@@ -1,4 +1,5 @@
 // הגדרת אפליקציית Express: middleware, נתיבים (routes) וטיפול בשגיאות
+const path = require('path')
 const express = require('express')
 const createSession = require('./config/session')
 const { notFound, errorHandler } = require('./middleware/errorHandler')
@@ -8,6 +9,7 @@ const groupRoutes = require('./routes/groupRoutes')
 const postRoutes = require('./routes/postRoutes')
 const friendRoutes = require('./routes/friendRoutes')
 const messageRoutes = require('./routes/messageRoutes')
+const statsRoutes = require('./routes/statsRoutes')
 const metaRoutes = require('./routes/metaRoutes')
 
 const app = express()
@@ -33,10 +35,20 @@ app.use('/api/groups', groupRoutes)
 app.use('/api/posts', postRoutes)
 app.use('/api/friends', friendRoutes)
 app.use('/api/messages', messageRoutes)
+app.use('/api/stats', statsRoutes)
 app.use('/api/meta', metaRoutes)
 
 // כל נתיב /api אחר שלא קיים - 404 בפורמט JSON
 app.use('/api', notFound)
+
+// ---------- האתר עצמו (אחרי npm run build) ----------
+// בפיתוח Vite מגיש את הלקוח. אחרי build - השרת מגיש את הקבצים מ-client/dist,
+// וכל כתובת אחרת מקבלת את index.html, ו-React Router מציג את העמוד הנכון
+const clientDist = path.join(__dirname, '..', 'client', 'dist')
+app.use(express.static(clientDist))
+app.get('/{*path}', (req, res, next) => {
+  res.sendFile(path.join(clientDist, 'index.html'), (err) => err && next()) // אין build - ממשיכים ל-404
+})
 
 // חייב להיות אחרון - תופס את כל השגיאות
 app.use(errorHandler)
