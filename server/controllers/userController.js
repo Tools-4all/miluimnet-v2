@@ -21,11 +21,11 @@ async function listUsers(req, res) {
   res.json(users.map((u) => u.toPublic()))
 }
 
-// GET /api/users/:id - פרופיל של משתמש אחד
+// GET /api/users/:id - פרופיל של משתמש אחד, כולל הקשר ביני לבינו (חברים / בקשה / כלום)
 async function getUser(req, res) {
-  const user = await User.findById(req.params.id)
+  const [user, me] = await Promise.all([User.findById(req.params.id), User.findById(req.session.userId)])
   if (!user) throw httpError(404, 'המשתמש לא נמצא')
-  res.json({ ...user.toPublic(), friendsCount: user.friends.length })
+  res.json({ ...user.toPublic(), friendsCount: user.friends.length, friendship: me ? me.friendshipWith(user) : 'none' })
 }
 
 // PUT /api/users/me - עדכון הפרופיל שלי

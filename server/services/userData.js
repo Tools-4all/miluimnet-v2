@@ -4,6 +4,7 @@
 const User = require('../models/User')
 const Group = require('../models/Group')
 const Post = require('../models/Post')
+const Message = require('../models/Message')
 const { deleteGroupData } = require('./groupData')
 
 async function deleteUserData(userId) {
@@ -17,6 +18,8 @@ async function deleteUserData(userId) {
   // הפוסטים שלו נמחקים, והלייקים שלו יורדים מפוסטים של אחרים
   await Post.deleteMany({ author: userId })
   await Post.updateMany({ likes: userId }, { $pull: { likes: userId } })
+  // וההודעות שלו - ששלח וגם שקיבל
+  await Message.deleteMany({ $or: [{ from: userId }, { to: userId }] })
 }
 
 module.exports = { deleteUserData }

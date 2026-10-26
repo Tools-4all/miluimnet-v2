@@ -11,6 +11,7 @@ process.env.SESSION_SECRET = process.env.SESSION_SECRET || 'test-secret'
 const mongoose = require('mongoose')
 const app = require('../server/app')
 const { ensureIndexes } = require('../server/config/db')
+const setupSocket = require('../server/socket')
 
 // מפעיל שרת אמיתי על פורט פנוי, ומחזיר את הכתובת שלו
 async function startServer() {
@@ -18,16 +19,17 @@ async function startServer() {
   await mongoose.connection.dropDatabase() // מתחילים ממסד נתונים ריק
   await ensureIndexes() // כמו בשרת האמיתי: האינדקסים (למשל unique) קיימים לפני הבקשה הראשונה
   const server = app.listen(0) // 0 = מערכת ההפעלה בוחרת פורט פנוי
+  const io = setupSocket(server, app.get('sessionMiddleware')) // כמו בשרת האמיתי - גם הצ'אט
   await new Promise((resolve) => server.once('listening', resolve))
-  const base = `http://localhost:${server.address().port}/api`
+  const origin = `http://localhost:${server.address().port}`
 
   async function stop() {
     await mongoose.connection.dropDatabase()
     await mongoose.disconnect()
     await app.get('sessionStore').close()
-    await new Promise((resolve) => server.close(resolve))
+    await new Promise((resolve) => io.close(resolve)) // סוגר גם את השרת עצמו
   }
-  return { base, stop }
+  return { base: `${origin}/api`, origin, stop }
 }
 
 // "לקוח" שזוכר את ה-cookie של ההתחברות, כמו דפדפן
@@ -45,6 +47,7 @@ function createClient(base) {
     return { status: res.status, data }
   }
   return {
+    cookie: () => cookie, // בשביל חיבור Socket.io בשם אותו משתמש
     get: (path) => request('GET', path),
     post: (path, body) => request('POST', path, body ?? {}),
     put: (path, body) => request('PUT', path, body ?? {}),

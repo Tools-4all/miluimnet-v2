@@ -6,6 +6,8 @@ const authRoutes = require('./routes/authRoutes')
 const userRoutes = require('./routes/userRoutes')
 const groupRoutes = require('./routes/groupRoutes')
 const postRoutes = require('./routes/postRoutes')
+const friendRoutes = require('./routes/friendRoutes')
+const messageRoutes = require('./routes/messageRoutes')
 const metaRoutes = require('./routes/metaRoutes')
 
 const app = express()
@@ -29,6 +31,8 @@ app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/groups', groupRoutes)
 app.use('/api/posts', postRoutes)
+app.use('/api/friends', friendRoutes)
+app.use('/api/messages', messageRoutes)
 app.use('/api/meta', metaRoutes)
 
 // כל נתיב /api אחר שלא קיים - 404 בפורמט JSON

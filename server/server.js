@@ -3,6 +3,7 @@ require('dotenv').config({ quiet: true })
 const http = require('http')
 const app = require('./app')
 const connectDB = require('./config/db')
+const setupSocket = require('./socket')
 
 const PORT = process.env.PORT || 3000
 
@@ -10,8 +11,9 @@ async function start() {
   // קודם מתחברים ל-MongoDB, ורק אחר כך מקבלים בקשות
   await connectDB()
 
-  // שרת http רגיל שעוטף את Express - נצטרך אותו בהמשך גם ל-Socket.io (הצ'אט)
+  // שרת http רגיל שעוטף את Express. Socket.io (הצ'אט) מתחבר לאותו שרת, ומשתמש באותו session
   const server = http.createServer(app)
+  setupSocket(server, app.get('sessionMiddleware'))
 
   // שגיאה בהפעלת השרת - למשל הפורט כבר תפוס על ידי תוכנה אחרת
   server.on('error', (err) => {

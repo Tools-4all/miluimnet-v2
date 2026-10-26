@@ -85,4 +85,26 @@ userSchema.methods.toSelf = function () {
   return { ...this.toPublic(), friendRequestsCount: this.friendRequests.length }
 }
 
+// ---------- חברים ----------
+
+const idOf = (item) => item._id || item
+
+userSchema.methods.isFriendWith = function (userId) {
+  return this.friends.some((id) => idOf(id).equals(userId))
+}
+
+// האם המשתמש הזה שלח לי בקשת חברות (הבקשות נשמרות אצל מי שמקבל אותן)
+userSchema.methods.hasFriendRequestFrom = function (userId) {
+  return this.friendRequests.some((id) => idOf(id).equals(userId))
+}
+
+// מה הקשר ביני לבין משתמש אחר - כדי שעמוד הפרופיל יציג את הכפתור הנכון
+userSchema.methods.friendshipWith = function (other) {
+  if (this._id.equals(other._id)) return 'self'
+  if (this.isFriendWith(other._id)) return 'friends'
+  if (this.hasFriendRequestFrom(other._id)) return 'incoming' // הוא ביקש ממני
+  if (other.hasFriendRequestFrom(this._id)) return 'outgoing' // אני ביקשתי ממנו
+  return 'none'
+}
+
 module.exports = mongoose.model('User', userSchema)
