@@ -1,0 +1,68 @@
+/* @font-face (CSS3): הגופן Heebo נטען מקבצים שנמצאים בפרויקט עצמו (src/assets/fonts),
+   ולא מאתר חיצוני - כך האתר נראה אותו דבר גם בלי אינטרנט, ולא שולח בקשות לשרת של מישהו אחר.
+
+   לכל משקל (400 רגיל, 500 בינוני, 700 מודגש) יש שני קבצים: עברית ולטינית.
+   unicode-range אומר לדפדפן איזה קובץ מכיל אילו תווים - והוא מוריד רק את מה שבאמת מופיע בדף.
+   font-display: swap - עד שהגופן נטען מוצג גופן של המערכת, כדי שהטקסט לא יהיה בלתי נראה.
+
+   הגופן: Heebo, רישיון SIL Open Font License (ראו src/assets/fonts/OFL.txt) */
+
+/* 400 - אותיות עבריות */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/heebo-hebrew-400-normal.woff2') format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+
+/* 400 - אותיות לועזיות, ספרות וסימנים */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/heebo-latin-400-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* 500 - אותיות עבריות */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/heebo-hebrew-500-normal.woff2') format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+
+/* 500 - אותיות לועזיות, ספרות וסימנים */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/heebo-latin-500-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* 700 - אותיות עבריות */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/heebo-hebrew-700-normal.woff2') format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+
+/* 700 - אותיות לועזיות, ספרות וסימנים */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/heebo-latin-700-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}

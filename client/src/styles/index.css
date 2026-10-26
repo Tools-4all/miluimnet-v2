@@ -1,5 +1,6 @@
 /* נקודת הכניסה של העיצוב: מייבא את כל קבצי ה-CSS לפי הסדר.
-   הסדר חשוב - base ראשון (המשתנים), ו-responsive אחרון (כדי שידרוס את מה שלפניו בטלפון) */
+   הסדר חשוב - הגופנים וה-base ראשונים (המשתנים), ו-responsive אחרון (כדי שידרוס את מה שלפניו בטלפון) */
+@import './fonts.css';
 @import './base.css';
 @import './buttons.css';
 @import './forms.css';
@@ -9,4 +10,5 @@
 @import './groups.css';
 @import './posts.css';
 @import './chat.css';
+@import './stats.css';
 @import './responsive.css';

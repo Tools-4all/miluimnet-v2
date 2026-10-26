@@ -2,6 +2,13 @@
    @media - הכללים בפנים חלים רק כשהמסך צר מ-760 פיקסלים.
    כל נושא חדש שנוסף לאתר מוסיף כאן את ההתאמות שלו לטלפון */
 
+/* מסך בינוני (מחשב נייד קטן): יש הרבה קישורים בתפריט, אז מסתירים את תת-הכותרת של הלוגו */
+@media (max-width: 1100px) {
+  .logo-tagline {
+    display: none;
+  }
+}
+
 @media (max-width: 760px) {
   .navbar-inner {
     flex-wrap: wrap;
@@ -44,7 +51,8 @@
   }
 
   .group-layout,
-  .messages-layout {
+  .messages-layout,
+  .charts-grid {
     grid-template-columns: 1fr; /* העמודה שבצד יורדת מעל/מתחת לתוכן */
   }
 

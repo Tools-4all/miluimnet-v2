@@ -1,0 +1,126 @@
+/* סטטיסטיקות: מספרים כלליים, ורשת של גרפי D3 */
+
+.stat-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.stat-tile {
+  padding: 16px;
+  text-align: center;
+}
+
+.stat-tile strong {
+  display: block;
+  font-size: 30px;
+  color: var(--primary);
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-tile span {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* ברשת יש gap, אז לא צריך את הרווח שבין sections */
+.charts-grid section.panel + section.panel {
+  margin-top: 0;
+}
+
+.chart-wide {
+  grid-column: 1 / -1;
+}
+
+/* ---------- הגרף עצמו ---------- */
+
+.chart {
+  position: relative; /* חלונית המידע ממוקמת ביחס לגרף */
+  margin-top: 8px;
+}
+
+.chart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+/* קווי הרשת והצירים - עדינים, כדי שהנתונים יבלטו */
+.chart-grid line,
+.chart-axis line,
+.chart-axis path {
+  stroke: var(--border);
+}
+
+.chart-axis text {
+  fill: var(--muted);
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.chart-axis-label {
+  fill: var(--text);
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.chart-label {
+  fill: var(--text);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.chart-crosshair {
+  stroke: var(--muted);
+  stroke-dasharray: 3 3;
+}
+
+/* חלונית המידע שמופיעה במעבר עכבר */
+.chart-tooltip {
+  position: absolute;
+  pointer-events: none; /* לא "חוסמת" את העכבר */
+  opacity: 0;
+  transform: translate(-50%, -100%);
+  background: var(--text);
+  color: white;
+  padding: 6px 10px;
+  border-radius: var(--radius-small);
+  font-size: 13px;
+  white-space: nowrap;
+  transition: opacity 0.12s;
+}
+
+/* ---------- הטבלה מתחת לגרף ---------- */
+
+.chart-table {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.chart-table summary {
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.chart-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+.chart-table th,
+.chart-table td {
+  text-align: right;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+}

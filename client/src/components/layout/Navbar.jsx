@@ -42,6 +42,7 @@ function Navbar() {
             </NavLink>
             <NavLink to="/users">משתמשים</NavLink>
             <NavLink to="/search">חיפוש</NavLink>
+            <NavLink to="/stats">סטטיסטיקות</NavLink>
           </nav>
         )}
 

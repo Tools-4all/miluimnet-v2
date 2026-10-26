@@ -108,6 +108,7 @@
   text-decoration: none;
   color: var(--text);
   font-weight: 500;
+  white-space: nowrap; /* השם בשורה אחת */
 }
 
 /* ---------- כותרות עמודים ---------- */

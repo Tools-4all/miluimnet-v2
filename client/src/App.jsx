@@ -16,6 +16,7 @@ import GroupPage from './pages/GroupPage.jsx'
 import SearchPosts from './pages/SearchPosts.jsx'
 import Friends from './pages/Friends.jsx'
 import Messages from './pages/Messages.jsx'
+import Stats from './pages/Stats.jsx'
 
 // עמוד שדורש התחברות
 const privatePage = (page) => <RequireAuth>{page}</RequireAuth>
@@ -46,6 +47,7 @@ function App() {
           <Route path="/friends" element={privatePage(<Friends />)} />
           <Route path="/messages" element={privatePage(<Messages />)} />
           <Route path="/messages/:userId" element={privatePage(<Messages />)} />
+          <Route path="/stats" element={privatePage(<Stats />)} />
           <Route path="*" element={<EmptyState text="העמוד לא נמצא." />} />
         </Routes>
       </main>
